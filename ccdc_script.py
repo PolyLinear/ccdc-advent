@@ -76,8 +76,8 @@ class CCDCScript(ABC):
             self.print_err(f'{seperator}\n{label.center(60, "*")}\n{seperator}')
 
 
-    def check_priv(self):
-        return os.geteuid() != 0
+    def is_priv(self):
+        return os.geteuid() == 0
 
     def enable_service(self, service: str) -> bool :
         if self.distro == Distro.CCDC_RHEL or self.distro == Distro.CCDC_DEBIAN:

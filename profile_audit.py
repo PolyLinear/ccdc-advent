@@ -38,7 +38,7 @@ class ProfileAudit(ccdc_script.CCDCScript):
         return { "users": { "all": [], "privilege": [], "interactive": [] } }
         
     def produce_json(self) -> dict:
-        if not self.check_priv():
+        if not self.is_priv():
             return {}
 
         self.print_err("Starting to get user info")

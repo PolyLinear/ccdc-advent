@@ -43,8 +43,7 @@ class PackageSigCheck(ccdc_script.CCDCScript):
             # dirty solution, could use regex capture groups instead
             line = line.split()
             changed = line[0].decode()
-            path = line[2].decode()
-
+            path = line[2].decode() if len(line) == 3 else line[1].decode()
             # output of 'rpm -Va' doesn't specify the origin packages
             # need to query
             package_proc = subprocess.run(

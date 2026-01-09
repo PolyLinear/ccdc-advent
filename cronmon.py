@@ -46,7 +46,7 @@ class CCDCCronScript(ccdc_script.CCDCScript):
             self.crontabs[path] = {"status": CHANGED, "hash": hash_hex}
 
     def loop_cron(self) -> None:
-        if not self.check_priv():
+        if not self.is_priv():
             return
 
         self.get_cron_hash("/etc/crontab")
@@ -78,7 +78,7 @@ class CCDCCronScript(ccdc_script.CCDCScript):
         return format
 
     def produce_json(self) -> dict:
-        if not self.check_priv():
+        if not self.is_priv():
             self.print_err("Need root privileges")
             return {}
 
